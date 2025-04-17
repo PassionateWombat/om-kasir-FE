@@ -15,7 +15,7 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Om Kasir | Point of Sales",
+  title: "Om Kasir | Bayar Jadi Mudah!",
   description: "Nyaman jadi kasir",
 };
 
