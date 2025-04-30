@@ -86,7 +86,7 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
                 ...session.user,
                 roles: token.roles,
                 id: token.accessToken.claims.userId,
-                email: token.accessToken.claims.sub ?? "",
+                email: token.accessToken.claims.email ?? "",
                 // imageUrl: (token.imageUrl as string) ?? "",
             };
             return session;
@@ -104,8 +104,10 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
                     //     claims: user.token.refreshToken.claims,
                     //     value: user.token.refreshToken.value,
                     // },
+                    name: user.name,
                     roles: user.roles,
                     userId: user.userId,
+                    email: user.email,
                     // imageUrl: user.imageUrl,
                 };
             }

@@ -29,6 +29,7 @@ import {
   SidebarMenuItem,
   useSidebar,
 } from "@/components/ui/sidebar"
+import { signOut, useSession } from "next-auth/react"
 
 export function NavUser({
   user,
@@ -40,6 +41,12 @@ export function NavUser({
   }
 }) {
   const { isMobile } = useSidebar()
+
+  const { data: session } = useSession();
+  if (!session?.user) {
+    return null; 
+  }
+
 
   return (
     <SidebarMenu>
@@ -74,8 +81,8 @@ export function NavUser({
                   <AvatarFallback className="rounded-lg">CN</AvatarFallback>
                 </Avatar>
                 <div className="grid flex-1 text-left text-sm leading-tight">
-                  <span className="truncate font-medium">{user.name}</span>
-                  <span className="truncate text-xs">{user.email}</span>
+                  <span className="truncate font-medium">{session?.user.name}</span>
+                  <span className="truncate text-xs">{session?.user.email}</span>
                 </div>
               </div>
             </DropdownMenuLabel>
@@ -102,7 +109,7 @@ export function NavUser({
               </DropdownMenuItem>
             </DropdownMenuGroup>
             <DropdownMenuSeparator />
-            <DropdownMenuItem>
+            <DropdownMenuItem onClick={() => signOut({callbackUrl: "/"})}>
               <LogOut />
               Log out
             </DropdownMenuItem>
