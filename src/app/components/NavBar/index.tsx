@@ -3,8 +3,11 @@
 import Image from "next/image"
 import Link from "next/link"
 import { buttonVariants } from "@/components/ui/button"
+import { useSession, signOut } from "next-auth/react"
 
 const NavBar = () => {
+    const { data: session } = useSession(); 
+
     
     return (
         <>
@@ -23,14 +26,21 @@ const NavBar = () => {
                 </Link>
             </div>
             <div className="space-x-4">
+                {session ? (
+                    <button onClick={() => signOut({callbackUrl: "/login"})} className={buttonVariants({variant : "outline"})}>
+                        Logout
+                    </button>
+                ) : (
+                    <>
                 <Link className={buttonVariants({ variant: "outline"})} href="/login"  >
                 Login
                 </Link>
                 <Link className={buttonVariants({ variant: "outline"})} href="/register">
                 Register
                 </Link>
+                </>
+                )}
             </div>
-
 
         </nav>
         </>

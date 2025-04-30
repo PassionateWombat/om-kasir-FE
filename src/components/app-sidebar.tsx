@@ -25,13 +25,9 @@ import {
   SidebarHeader,
   SidebarRail,
 } from "@/components/ui/sidebar"
+import { useSession } from "next-auth/react"
 
 const data = {
-  user: {
-    name: "user",
-    email: "m@example.com",
-    avatar: "/avatars/shadcn.jpg",
-  },
   teams: [
     {
       name: "Toko Ban Makmur Jaya",
@@ -52,66 +48,66 @@ const data = {
   navMain: [
     {
       title: "Item",
-      url: "#",
+      href: "#",
       icon: SquareTerminal,
       isActive: true,
       items: [
         {
           title: "Add Product",
-          url: "#",
+          href: "/dashboard/product",
         },
         {
           title: "Product List",
-          url: "#",
+          href: "/dashboard/productlist",
         },
       ],
     },
     {
       title: "Payment",
-      url: "#",
+      href: "#",
       icon: Bot,
       items: [
         {
           title: "Transaction",
-          url: "#",
+          href: "#",
         },
         {
           title: "Add Payment",
-          url: "#",
+          href: "#",
         },
       ],
     },
     {
       title: "Sales",
-      url: "#",
+      href: "#",
       icon: BookOpen,
       items: [
         {
           title: "Sales Overview",
-          url: "#",
+          href: "#",
         },
       ],
     },
     {
       title: "Settings",
-      url: "#",
+      href: "#",
       icon: Settings2,
       items: [
         {
           title: "General",
-          url: "#",
+          href: "#",
         },
         {
           title: "Team",
-          url: "#",
+          href: "#",
         },
         {
           title: "Billing",
-          url: "#",
+          href: "#",
         },
         {
           title: "Limits",
-          url: "#",
+          href: "#",
         },
       ],
     },
@@ -119,23 +115,33 @@ const data = {
   projects: [
     {
       name: "Design Engineering",
-      url: "#",
+      href: "#",
       icon: Frame,
     },
     {
       name: "Sales & Marketing",
-      url: "#",
+      href: "#",
       icon: PieChart,
     },
     {
       name: "Travel",
-      url: "#",
+      href: "#",
       icon: Map,
     },
   ],
-}
+};
+
+
 
 export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
+  const {data: session} = useSession();
+
+  const user = {
+    email: session?.user?.email ?? "guest@example.com",
+    name: session?.user?.name ?? "namasss",
+    avatar: "CN",
+
+  };
   return (
     <Sidebar collapsible="icon" {...props}>
       <SidebarHeader>
@@ -146,7 +152,7 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
         <NavProjects projects={data.projects} />
       </SidebarContent>
       <SidebarFooter>
-        <NavUser user={data.user} />
+        <NavUser user={user} />
       </SidebarFooter>
       <SidebarRail />
     </Sidebar>
