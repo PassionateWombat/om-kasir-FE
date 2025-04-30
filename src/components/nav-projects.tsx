@@ -30,7 +30,7 @@ export function NavProjects({
 }: {
   projects: {
     name: string
-    url: string
+    href: string
     icon: LucideIcon
   }[]
 }) {

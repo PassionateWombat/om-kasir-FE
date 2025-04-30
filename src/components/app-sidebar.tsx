@@ -48,66 +48,66 @@ const data = {
   navMain: [
     {
       title: "Item",
-      url: "#",
+      href: "#",
       icon: SquareTerminal,
       isActive: true,
       items: [
         {
           title: "Add Product",
-          url: "http://localhost:3000/dashboard/product",
+          href: "/dashboard/product",
         },
         {
           title: "Product List",
-          url: "#",
+          href: "/dashboard/productlist",
         },
       ],
     },
     {
       title: "Payment",
-      url: "#",
+      href: "#",
       icon: Bot,
       items: [
         {
           title: "Transaction",
-          url: "#",
+          href: "#",
         },
         {
           title: "Add Payment",
-          url: "#",
+          href: "#",
         },
       ],
     },
     {
       title: "Sales",
-      url: "#",
+      href: "#",
       icon: BookOpen,
       items: [
         {
           title: "Sales Overview",
-          url: "#",
+          href: "#",
         },
       ],
     },
     {
       title: "Settings",
-      url: "#",
+      href: "#",
       icon: Settings2,
       items: [
         {
           title: "General",
-          url: "#",
+          href: "#",
         },
         {
           title: "Team",
-          url: "#",
+          href: "#",
         },
         {
           title: "Billing",
-          url: "#",
+          href: "#",
         },
         {
           title: "Limits",
-          url: "#",
+          href: "#",
         },
       ],
     },
@@ -115,21 +115,21 @@ const data = {
   projects: [
     {
       name: "Design Engineering",
-      url: "#",
+      href: "#",
       icon: Frame,
     },
     {
       name: "Sales & Marketing",
-      url: "#",
+      href: "#",
       icon: PieChart,
     },
     {
       name: "Travel",
-      url: "#",
+      href: "#",
       icon: Map,
     },
   ],
-}
+};
 
 
 
